@@ -34,7 +34,7 @@ pipeline {
             steps {
                 // Deploy your application using sshPublisher
                 sshPublisher(publishers: [sshPublisherDesc(
-                    configName: 'Jenkins',
+                    configName: 'mypeeps',
                     transfers: [sshTransfer(
                         cleanRemote: false,
                         excludes: '',
@@ -74,4 +74,3 @@ If you encounter any issues, kindly report them by replying to this email, and o
             }
         }
     }
-}
