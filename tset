@@ -1,14 +1,10 @@
 pipeline {
     agent any
     
-    stages {
-        stage('Checkout') {
-            steps {
-                script {
-                    // Checkout code from Git
-                    git branch: 'main', credentialsId: 'e46bb6cc-6f09-4f00-a546-1c60f2920427', url: 'https://github.com/surya-devopsaws/index.git'
-                    )
-                }
+    stages{
+        stage("Git Checkout"){
+            steps{
+                git branch: 'main', credentialsId: 'e46bb6cc-6f09-4f00-a546-1c60f2920427', url: 'https://github.com/surya-devopsaws/index.git'
             }
         }
 
