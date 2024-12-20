@@ -15,7 +15,7 @@ pipeline {
                 steps {
                     // Deploy your application using sshPublisher
                     sshPublisher(publishers: [sshPublisherDesc(
-                        configName: 'mypeeps',
+                        configName: 'Jenkins',
                         transfers: [sshTransfer(
                             cleanRemote: false,
                             excludes: '',
