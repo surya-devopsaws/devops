@@ -8,41 +8,34 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                //nodejs(cacheLocationStrategy: workspace(), nodeJSInstallationName: '18.14.0') {
-                    // Your build steps go here
-                    // For example:
-                    //sh 'npm install'
-                    //sh 'npm run build'
+
+        
+
+            stage('Deploy') {
+                steps {
+                    // Deploy your application using sshPublisher
+                    sshPublisher(publishers: [sshPublisherDesc(
+                        configName: 'mypeeps',
+                        transfers: [sshTransfer(
+                            cleanRemote: false,
+                            excludes: '',
+                            execCommand: '',
+                            flatten: false,
+                            makeEmptyDirs: false,
+                            noDefaultExcludes: false,
+                            patternSeparator: '[, ]+',
+                            remoteDirectory: '/',
+                            remoteDirectorySDF: false,
+                            removePrefix: '',
+                            sourceFiles: '*/**'
+                        )],
+                        usePromotionTimestamp: false,
+                        useWorkspaceInPromotion: false,
+                        verbose: false
+                    )])
                 }
             }
-        }
-
-        stage('Deploy') {
-            steps {
-                // Deploy your application using sshPublisher
-                sshPublisher(publishers: [sshPublisherDesc(
-                    configName: 'mypeeps',
-                    transfers: [sshTransfer(
-                        cleanRemote: false,
-                        excludes: '',
-                        execCommand: '',
-                        flatten: false,
-                        makeEmptyDirs: false,
-                        noDefaultExcludes: false,
-                        patternSeparator: '[, ]+',
-                        remoteDirectory: '/',
-                        remoteDirectorySDF: false,
-                        removePrefix: '',
-                        sourceFiles: '*/**'
-                    )],
-                    usePromotionTimestamp: false,
-                    useWorkspaceInPromotion: false,
-                    verbose: false
-                )])
-            }
-        }
+          
         stage('SendMail') {
             steps {
                 // Send an email notification using emailext plugin
