@@ -7,17 +7,4 @@ pipeline {
                 sh 'echo "Building the project..."'
             }
         }
-        stage('Test') {
-            steps {
-                // Here you would put commands to run tests
-                sh 'echo "Running tests..."'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                // Here you would put commands to deploy your application
-                sh 'echo "Deployiny the software"'
-            }
-        }
-    }
-}
+       
