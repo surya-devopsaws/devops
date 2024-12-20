@@ -1,14 +1,12 @@
 pipeline {
     agent any
-     stages {
+    
+    stages {
         stage('Checkout') {
             steps {
                 script {
                     // Checkout code from Git
-                    checkout([$class: 'GitSCM',
-                              branches: [[name: 'main']],
-                              userRemoteConfigs: [[url: 'https://github.com/surya-devopsaws/index.git',
-                                                  credentialsId: '']]]
+                    git branch: 'main', credentialsId: 'e46bb6cc-6f09-4f00-a546-1c60f2920427', url: 'https://github.com/surya-devopsaws/index.git'
                     )
                 }
             }
@@ -24,8 +22,6 @@ pipeline {
                 }
             }
         }
-
-
 
         stage('Deploy') {
             steps {
@@ -71,4 +67,3 @@ If you encounter any issues, kindly report them by replying to this email, and o
             }
         }
     }
-    
