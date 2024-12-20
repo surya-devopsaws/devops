@@ -1,9 +1,6 @@
 pipeline {
     agent any
-
-    
-
-    stages {
+     stages {
         stage('Checkout') {
             steps {
                 script {
@@ -11,7 +8,7 @@ pipeline {
                     checkout([$class: 'GitSCM',
                               branches: [[name: 'main']],
                               userRemoteConfigs: [[url: 'https://github.com/surya-devopsaws/index.git',
-                                                  credentialsId: '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']]]
+                                                  credentialsId: '']]]
                     )
                 }
             }
@@ -74,3 +71,4 @@ If you encounter any issues, kindly report them by replying to this email, and o
             }
         }
     }
+    
