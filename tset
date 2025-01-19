@@ -8,6 +8,26 @@ pipeline {
             }
         }
 
+stage('Get Approvel') {
+    steps {
+        script {
+            def userInput = input(
+                message: 'Do you want to proceed this Deployment?',
+                submitterParameter: 'APPROVER',
+                ok: 'Yes',
+                parameters: [
+                    booleanParam(defaultValue: false, description: 'Approve deployment', name: 'APPROVE_DEPLOYMENT')
+                ]
+            )
+            def approver = userInput['APPROVER']
+            if (approver.toLowerCase() == 'Vinoth') {
+                echo 'Approved by Vinoth'
+            } else {
+                error "Approval not granted by vinoth. Only 'vinoth' is authorized to approve."
+            }
+        }
+    }
+}
 
         
 
