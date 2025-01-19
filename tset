@@ -20,8 +20,8 @@ stage('Get Approvel') {
                 ]
             )
             def approver = userInput['APPROVER']
-            if (approver.toLowerCase() == 'Vinoth') {
-                echo 'Approved by Vinoth'
+            if (approver.toLowerCase() == 'vinoth') {
+                echo 'Approved by vinoth'
             } else {
                 error "Approval not granted by vinoth. Only 'vinoth' is authorized to approve."
             }
