@@ -1,0 +1,43 @@
+permission.yml
+
+
+---
+- name: Set permissions for Laravel CloverPOS
+  hosts: all
+  become: yes
+  tasks:
+    - name: Set 775 permissions for the main project directory
+      file:
+        path: /opt/laravel/CloverPOS/
+        state: directory
+        mode: '0775'
+        recurse: yes
+
+    - name: Set 777 permissions for the storage directory
+      file:
+        path: /opt/laravel/CloverPOS/storage/
+        state: directory
+        mode: '0777'
+        recurse: yes
+
+    - name: Set 775 permissions for the bootstrap directory
+      file:
+        path: /opt/laravel/CloverPOS/bootstrap/
+        state: directory
+        mode: '0775'
+        recurse: yes
+
+    - name: Set 775 permissions for the public directory
+      file:
+        path: /opt/laravel/CloverPOS/public/
+        state: directory
+        mode: '0775'
+        recurse: yes
+
+    - name: Set 777 permissions for the logs directory
+      file:
+        path: /opt/laravel/CloverPOS/storage/logs/
+        state: directory
+        mode: '0777'
+        recurse: yes
+
